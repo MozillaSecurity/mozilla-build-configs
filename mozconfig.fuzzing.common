@@ -1,0 +1,35 @@
+# ASan
+export LLVM_HOME="/srv/repos/llvm/r253176"
+export CC="$LLVM_HOME/build/bin/clang -fsanitize=address"
+export CXX="$LLVM_HOME/build/bin/clang++ -fsanitize=address"
+export SANFLAG="-fsanitize=address -Dxmalloc=myxmalloc -fPIC -mllvm -asan-stack=0 -v"
+export CFLAGS=$SANFLAG
+export CXXFLAGS=$SANFLAG
+export LDFLAGS="-fsanitize=address"
+
+OS_TYPE=`uname`
+if [[ $OS_TYPE == 'Linux' ]]; then
+    CONCURRENCY=$((`grep -c processor /proc/cpuinfo` + 2))
+elif [[ $OS_TYPE == 'Darwin' ]]; then
+    CONCURRENCY=`sysctl -n hw.ncpu`
+else
+    CONCURRENCY=4
+fi
+
+mk_add_options MOZ_MAKE_FLAGS="-j$CONCURRENCY"
+#mk_add_options AUTOCLOBBER=1
+
+# Features
+export MOZ_WEBRTC_TESTS=1
+ac_add_options --enable-tests
+ac_add_options --enable-address-sanitizer
+ac_add_options --disable-jemalloc
+ac_add_options --disable-crashreporter
+
+# Build
+export MOZ_LLVM_HACKS=1
+export MOZ_DEBUG_SYMBOLS=1
+ac_add_options --enable-optimize="-O2"
+ac_add_options --enable-debug
+ac_add_options --enable-debug-symbols
+ac_add_options --disable-install-strip
