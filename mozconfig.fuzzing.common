@@ -2,7 +2,7 @@
 export LLVM_HOME="/srv/repos/llvm/r253176"
 export CC="$LLVM_HOME/build/bin/clang -fsanitize=address"
 export CXX="$LLVM_HOME/build/bin/clang++ -fsanitize=address"
-export SANFLAG="-fsanitize=address -Dxmalloc=myxmalloc -fPIC -mllvm -asan-stack=0 -v"
+export SANFLAG="-fsanitize=address -Dxmalloc=myxmalloc -fPIC -v"
 export CFLAGS=$SANFLAG
 export CXXFLAGS=$SANFLAG
 export LDFLAGS="-fsanitize=address"
@@ -11,7 +11,7 @@ OS_TYPE=`uname`
 if [[ $OS_TYPE == 'Linux' ]]; then
     CONCURRENCY=$((`grep -c processor /proc/cpuinfo` + 2))
 elif [[ $OS_TYPE == 'Darwin' ]]; then
-    CONCURRENCY=`sysctl -n hw.ncpu`
+    CONCURRENCY=2 #`sysctl -n hw.ncpu`
 else
     CONCURRENCY=4
 fi
