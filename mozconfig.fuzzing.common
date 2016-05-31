@@ -1,7 +1,6 @@
 # ASan
-export LLVM_HOME="/third_party/llvm-build/Release+Asserts"
-export CC="$LLVM_HOME/bin/clang -fsanitize=address"
-export CXX="$LLVM_HOME/bin/clang++ -fsanitize=address"
+export CC="/usr/bin/clang -fsanitize=address"
+export CXX="/usr/bin/clang++ -fsanitize=address"
 export SANFLAG="-fsanitize=address -Dxmalloc=myxmalloc -fPIC -v"
 export CFLAGS="$SANFLAG"
 export CXXFLAGS="$SANFLAG"
