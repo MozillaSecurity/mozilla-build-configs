@@ -6,16 +6,6 @@ export CFLAGS="$SANFLAG"
 export CXXFLAGS="$SANFLAG"
 export LDFLAGS="-fsanitize=address"
 
-OS_TYPE=$(uname)
-if [ "$OS_TYPE" = "Linux" ]; then
-    CONCURRENCY=$((`grep -c processor /proc/cpuinfo` + 2))
-elif [ "$OS_TYPE" = "Darwin" ]; then
-    CONCURRENCY=$(sysctl -n hw.ncpu)
-else
-    CONCURRENCY=4
-fi
-
-mk_add_options MOZ_MAKE_FLAGS="-j$CONCURRENCY"
 mk_add_options AUTOCLOBBER=1
 
 # Features
