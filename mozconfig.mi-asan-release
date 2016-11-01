@@ -1,4 +1,4 @@
-. $topsrcdir/../configs/mozconfig.fuzzing.common
+. $topsrcdir/../mozilla-build-configs/mozconfig.fuzzing.common
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/ff64-asan-release
 ac_add_options --enable-application=browser
