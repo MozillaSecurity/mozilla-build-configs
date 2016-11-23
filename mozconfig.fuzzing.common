@@ -18,7 +18,7 @@ ac_add_options --disable-crashreporter
 # Build
 export MOZ_LLVM_HACKS=1
 export MOZ_DEBUG_SYMBOLS=1
-ac_add_options --enable-optimize="-O2 -gline-tables-only"
+ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-debug
 ac_add_options --enable-debug-symbols
 ac_add_options --disable-install-strip
