@@ -1,6 +1,6 @@
 . $topsrcdir/../mozilla-build-configs/mozconfig.fuzzing.common
 
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj-ff64-asan-opt
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/ff-@CONFIG_GUESS@-faulty-asan-release
 ac_add_options --enable-application=browser
 ac_add_options --enable-ipc-fuzzer
 ac_add_options --disable-debug
