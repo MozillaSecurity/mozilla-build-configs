@@ -16,6 +16,7 @@ CARGO="$topsrcdir/rustc/bin/cargo"
 export CC="$topsrcdir/clang/bin/clang $FLAGS"
 export CXX="$topsrcdir/clang/bin/clang++ $FLAGS"
 export CPP="$topsrcdir/clang/bin/clang $FLAGS -E"
+export LLVM_SYMBOLIZER="$topsrcdir/clang/bin/llvm-symbolizer"
 export LLVMCONFIG=$topsrcdir/clang/bin/llvm-config
 export LDFLAGS="-Wl,-syslibroot,$CROSS_SYSROOT -Wl,-dead_strip"
 export TOOLCHAIN_PREFIX=$CROSS_CCTOOLS_PATH/bin/x86_64-apple-darwin11-
