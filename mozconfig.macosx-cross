@@ -32,6 +32,6 @@ export HOST_CFLAGS="-g"
 export HOST_CXXFLAGS="-g"
 export HOST_LDFLAGS="-g"
 
-#ac_add_options --enable-fuzzing
+ac_add_options --enable-fuzzing
 #ac_add_options --enable-ipc-fuzzer
 
