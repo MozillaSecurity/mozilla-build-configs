@@ -1,6 +1,6 @@
 . $topsrcdir/../mozilla-build-configs/mozconfig.fuzzing.common
 
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/ff-asan-release
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj/ff-asan-release
+ac_add_options --enable-optimize="-O2 -gline-tables-only"
 ac_add_options --enable-application=browser
 ac_add_options --disable-debug
-ac_add_options --disable-debug-symbols
