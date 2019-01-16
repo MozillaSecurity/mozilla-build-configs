@@ -1,4 +1,4 @@
-. "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/fuzzing.common"
+. $(dirname ${BASH_SOURCE[0]})/fuzzing.common
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/ff-asan-fuzzing-debug
 ac_add_options --enable-application=browser
