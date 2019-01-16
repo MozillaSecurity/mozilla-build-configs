@@ -13,7 +13,6 @@ ac_add_options --target=x86_64-pc-mingw32
 ac_add_options --host=x86_64-pc-mingw32
 
 # Disable
-ac_add_options --disable-jemalloc
 ac_add_options --disable-install-strip
 ac_add_options --disable-jemalloc
 ac_add_options --disable-crashreporter
