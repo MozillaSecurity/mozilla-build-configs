@@ -1,4 +1,4 @@
-. $topsrcdir/../mozilla-build-configs/mozconfig.macosx-cross
+. $topsrcdir/../mozilla-build-configs/cross/mozconfig.macosx-cross
 
 mk_add_options AUTOCLOBBER=1
 

@@ -1,0 +1,27 @@
+# CLang
+export CC="clang-cl.exe"
+export CXX="clang-cl.exe"
+
+# Link
+export LDFLAGS="clang_rt.asan_dynamic-x86_64.lib clang_rt.asan_dynamic_runtime_thunk-x86_64.lib"
+CLANG_LIB_DIR="$(cd ~/.mozbuild/clang/lib/clang/*/lib/windows && pwd)"
+export MOZ_CLANG_RT_ASAN_LIB_PATH="${CLANG_LIB_DIR}/clang_rt.asan_dynamic-x86_64.dll"
+export LIB=$LIB:$CLANG_LIB_DIR
+
+# 64-bit Build
+ac_add_options --target=x86_64-pc-mingw32
+ac_add_options --host=x86_64-pc-mingw32
+
+# Disable
+ac_add_options --disable-jemalloc
+ac_add_options --disable-install-strip
+ac_add_options --disable-jemalloc
+ac_add_options --disable-crashreporter
+ac_add_options --disable-profiling
+
+# Enable Fuzzing and ASan
+ac_add_options --enable-address-sanitizer
+ac_add_options --enable-fuzzing
+ac_add_options --enable-debug
+
+ac_add_options --enable-js-shell

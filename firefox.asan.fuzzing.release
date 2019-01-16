@@ -1,4 +1,4 @@
-. $topsrcdir/../mozilla-build-configs/mozconfig.fuzzing.common
+. $topsrcdir/../mozilla-build-configs/fuzzing.common
 
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj/ff-asan-release
 ac_add_options --enable-optimize="-O2 -gline-tables-only"
