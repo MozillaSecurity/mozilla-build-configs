@@ -1,6 +1,6 @@
 # ASan
-export CC="/usr/bin/clang -fsanitize=address"
-export CXX="/usr/bin/clang++ -fsanitize=address"
+export CC="/usr/bin/clang"
+export CXX="/usr/bin/clang++"
 export SANFLAG="-fsanitize=address -Dxmalloc=myxmalloc -fPIC -v"
 export CFLAGS="$SANFLAG"
 export CXXFLAGS="$SANFLAG"
