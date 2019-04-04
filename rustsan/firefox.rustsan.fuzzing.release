@@ -1,0 +1,14 @@
+. $topsrcdir/../mozilla-build-configs/fuzzing.common
+
+export SANFLAG="-fcolor-diagnostics -fsanitize=address -Dxmalloc=myxmalloc -fPIC -ftls-model=global-dynamic"
+
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj/ff-rustsan-release
+ac_add_options --enable-optimize="-O2 -gline-tables-only"
+ac_add_options --enable-application=browser
+ac_add_options --disable-debug
+
+RUSTFLAGS="-Z sanitizer=address"
+RUST_TARGET="--target=x86_64-unknown-linux-gnu"
+
+# RUST_HOST_TARGET="--target=x86_64-unknown-linux-gnu"
+# RUST_TARGET_ENV_NAME="--target=x86_64-unknown-linux-gnu"
