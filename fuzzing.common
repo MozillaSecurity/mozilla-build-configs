@@ -1,26 +1,34 @@
-# ASan
-export CC="/usr/bin/clang"
-export CXX="/usr/bin/clang++"
-export SANFLAG="-fsanitize=address -Dxmalloc=myxmalloc -fPIC -v"
+# Compiler
+export CC="/usr/bin/clang-8"
+export CXX="/usr/bin/clang++-8"
+export SANFLAG="-fcolor-diagnostics -fsanitize=address -Dxmalloc=myxmalloc -fPIC"
 export CFLAGS="$SANFLAG"
 export CXXFLAGS="$SANFLAG"
-export LDFLAGS="-fsanitize=address"
 
+# Linker
+export LD="lld-8"
+export LDFLAGS="-fsanitize=address -v -fuse-ld=$LD"
+
+# Configuration
 mk_add_options AUTOCLOBBER=1
 
 # Features
-export MOZ_WEBRTC_TESTS=1
 ac_add_options --enable-tests
 ac_add_options --enable-address-sanitizer
+ac_add_options --enable-undefined-sanitizer
+ac_add_options --enable-fuzzing
 ac_add_options --disable-jemalloc
 ac_add_options --disable-crashreporter
+ac_add_options --disable-elf-hack
+ac_add_options --disable-profiling
 
 # Build
-export MOZ_LLVM_HACKS=1
 export MOZ_DEBUG_SYMBOLS=1
+export RUSTC_OPT_LEVEL=1
 ac_add_options --enable-optimize="-O2"
 ac_add_options --enable-debug
 ac_add_options --enable-debug-symbols
 ac_add_options --disable-install-strip
-
-ac_add_options --enable-fuzzing
+if [ -x "$(command -v ccache)" ]; then
+    ac_add_options --with-ccache
+fi
