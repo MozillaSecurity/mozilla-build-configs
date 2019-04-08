@@ -1,6 +1,6 @@
 . "$(dirname ${BASH_SOURCE[0]})/fuzzing.common"
 
-mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/ff-asan-fuzzing-release
+mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/obj/ff-asan-fuzzing-release
 ac_add_options --enable-application=browser
 ac_add_options --enable-optimize="-O2 -gline-tables-only"
 ac_add_options --enable-debug-symbols
